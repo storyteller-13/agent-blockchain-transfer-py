@@ -1,35 +1,16 @@
-# 🧔🏼‍♂️ Bill, the Blockchain Transfer Alert Agent
+# Bill — blockchain transfer alert agent
 
-<br>
+Sends email (via [Resend](https://resend.com)) when a transfer is detected to a watched address on Bitcoin, Ethereum, Cardano, TON, Tron, NEAR, Zcash, or XRP.
 
-- Sends you an email (via [Resend](https://resend.com)) whenever a transfer is detected to a watched **Bitcoin** (or other chain) address.
+## Quick start
 
-<br>
+```bash
+make install
+cp .env.example .env   # add RESEND_API_KEY, NOTIFY_EMAIL, etc.
+cp config.example.json config.json
+make server
+```
 
-## Setup
+**Full setup, environment reference, Vercel deploy, and cron/KV details:** [`docs/SKILL.md`](docs/SKILL.md).
 
-1. Install dependencies:
-
-   ```bash
-   make install
-   ```
-
-2. **Environment variables**
-
-   - Copy `.env.example` to `.env`.
-   - [Create a Resend API key](https://resend.com/api-keys) and set `RESEND_API_KEY`.
-   - Set `NOTIFY_EMAIL` to the address that should receive alerts.
-   - (Optional) Set `FROM_EMAIL`; for production use a [verified domain](https://resend.com/domains). For testing you can keep `Alerts <onboarding@resend.dev>`.
-   - (Optional) `ETHEREUM_RPC_URL` – recommended for production (e.g. [Alchemy](https://alchemy.com) or [Infura](https://infura.io)); avoids rate limits and downtime from public RPCs.
-   - (Optional) `POLL_INTERVAL_SEC` – default `30`.
-
-3. **Addresses config**
-
-   - Copy `config.example.json` to `config.json`.
-   - Add addresses to watch in all the chains.
-
-4. **Run the agent**
-
-   ```bash
-   make server
-   ```
+Deploy-only entry point: [`docs/DEPLOY.md`](docs/DEPLOY.md).
